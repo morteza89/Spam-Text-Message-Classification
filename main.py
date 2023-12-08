@@ -176,6 +176,7 @@ def Test_Sentence(message, model, tokenizer, X, labels=['ham', 'spam']):
     pred = model.predict(padded)
 
     print("Here is the predicted label", pred, labels[np.argmax(pred)])
+    return labels[np.argmax(pred)]
 
 
 def run(input_data, plt_history=True, output_dir=None, plot_data_dist=True):
@@ -244,11 +245,11 @@ def TEST(saved_dir, message=None):
         message3 = ['Hello, how are you doing today?']
 
         # test the model
-        Test_Sentence(message1, model, tokenizer, X)
-        Test_Sentence(message2, model, tokenizer, X)
-        Test_Sentence(message3, model, tokenizer, X)
+        lable = Test_Sentence(message1, model, tokenizer, X)
+        lable = Test_Sentence(message2, model, tokenizer, X)
+        lable = Test_Sentence(message3, model, tokenizer, X)
     else:
-        Test_Sentence(message, model, tokenizer, X)
+        lable = Test_Sentence(message, model, tokenizer, X)
 
 
 def main():
