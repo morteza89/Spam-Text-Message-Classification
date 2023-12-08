@@ -93,7 +93,7 @@ def training_Doc2Vec(train_tagged, epoch=100):
     d2v_model = Doc2Vec(dm=1, dm_mean=1, size=20, window=8,
                         min_count=1, workers=1, alpha=0.065, min_alpha=0.065)
     d2v_model.build_vocab([x for x in tqdm(train_tagged.values)])
-    for epoch in range(epoch):
+    for _ in range(epoch):
         d2v_model.train(utils.shuffle([x for x in tqdm(
             train_tagged.values)]), total_examples=len(train_tagged.values), epochs=1)
         d2v_model.alpha -= 0.002
